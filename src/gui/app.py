@@ -110,7 +110,7 @@ class StockAnalyzerGUI:
         self.output_frame.pack(fill=tk.BOTH, expand=True, padx=40, pady=10)
 
         # Left Column for Text Advice
-        self.text_frame = tk.Frame(self.output_frame, bg=self.panel_color, bd=1, relief="ridge", padx=30, pady=30)
+        self.text_frame = tk.Frame(self.output_frame, bg=self.panel_color, bd=1, relief="ridge", padx=20, pady=20)
         self.text_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 10))
 
         # Right Column for Chart
@@ -118,25 +118,27 @@ class StockAnalyzerGUI:
         self.graph_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(10, 0))
 
         # --- Text Frame Elements ---
-        self.lbl_action_title = tk.Label(self.text_frame, text="", font=("Segoe UI", 14, "bold"), fg=self.text_muted, bg=self.panel_color, justify=tk.LEFT)
+        self.lbl_action_title = tk.Label(self.text_frame, text="", font=("Segoe UI", 13, "bold"), fg=self.text_muted, bg=self.panel_color, justify=tk.LEFT)
         self.lbl_action_title.pack(anchor=tk.W)
 
-        self.lbl_action_main = tk.Label(self.text_frame, text="Zatím žádná analýza...", font=("Segoe UI", 28, "bold"), fg=self.text_main, bg=self.panel_color, justify=tk.LEFT)
-        self.lbl_action_main.pack(anchor=tk.W, pady=(0, 20))
+        self.lbl_action_main = tk.Label(self.text_frame, text="Zatím žádná analýza...", font=("Segoe UI", 24, "bold"), fg=self.text_main, bg=self.panel_color, justify=tk.LEFT)
+        self.lbl_action_main.pack(anchor=tk.W, pady=(0, 15))
 
         # Step by step box
-        self.steps_box = tk.LabelFrame(self.text_frame, text=" Krok za krokem: Co přesně máte udělat ", font=("Segoe UI", 12, "bold"), bg=self.panel_color, fg=self.accent_color, padx=15, pady=15)
-        self.steps_box.pack(fill=tk.X, pady=10)
+        self.steps_box = tk.LabelFrame(self.text_frame, text=" Krok za krokem: Co přesně máte udělat ", font=("Segoe UI", 12, "bold"), bg=self.panel_color, fg=self.accent_color, padx=15, pady=10)
+        self.steps_box.pack(fill=tk.BOTH, expand=True, pady=(5, 10))
         
-        self.lbl_steps = tk.Label(self.steps_box, text="Zvolte akcii nahoře a klikněte na Začít analýzu.", font=("Segoe UI", 12), fg=self.text_main, bg=self.panel_color, justify=tk.LEFT, wraplength=400)
-        self.lbl_steps.pack(anchor=tk.W)
+        self.lbl_steps = tk.Label(self.steps_box, text="Zvolte akcii nahoře a klikněte na Začít analýzu.", font=("Segoe UI", 12), fg=self.text_main, bg=self.panel_color, justify=tk.LEFT)
+        self.lbl_steps.pack(anchor=tk.NW, fill=tk.BOTH, expand=True)
+        self.steps_box.bind('<Configure>', lambda e: self.lbl_steps.config(wraplength=max(100, e.width - 40)))
 
         # Reasoning box
-        self.reason_box = tk.LabelFrame(self.text_frame, text=" Proč vám to radíme? (Vysvětlení od AI) ", font=("Segoe UI", 12, "bold"), bg=self.panel_color, fg=self.text_muted, padx=15, pady=15)
-        self.reason_box.pack(fill=tk.X, pady=20)
+        self.reason_box = tk.LabelFrame(self.text_frame, text=" Proč vám to radíme? (Vysvětlení od AI) ", font=("Segoe UI", 12, "bold"), bg=self.panel_color, fg=self.text_muted, padx=15, pady=10)
+        self.reason_box.pack(fill=tk.BOTH, expand=True, pady=(5, 10))
         
-        self.lbl_reason = tk.Label(self.reason_box, text="", font=("Segoe UI", 11, "italic"), fg=self.text_main, bg=self.panel_color, justify=tk.LEFT, wraplength=400)
-        self.lbl_reason.pack(anchor=tk.W)
+        self.lbl_reason = tk.Label(self.reason_box, text="", font=("Segoe UI", 11, "italic"), fg=self.text_main, bg=self.panel_color, justify=tk.LEFT)
+        self.lbl_reason.pack(anchor=tk.NW, fill=tk.BOTH, expand=True)
+        self.reason_box.bind('<Configure>', lambda e: self.lbl_reason.config(wraplength=max(100, e.width - 40)))
 
     def pick_random(self):
         if self.tickers:
