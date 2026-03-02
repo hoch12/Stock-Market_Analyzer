@@ -32,10 +32,11 @@ def main():
         print("  2. Run Phase 2: Feature Engineering & Preprocessing")
         print("  3. Run Phase 3: Train Machine Learning Model (Random Forest)")
         print("  4. Run Phase 4: Strategy Simulations (Backtesting)")
-        print("  5. 🚀 RUN ENTIRE PIPELINE (1 -> 4)")
+        print("  5. 🚀 RUN ENTIRE PIPLELINE (CLI Only)")
+        print("  6. 🖥️  LAUNCH GRAPHICAL EXPERT SYSTEM (GUI)")
         print("  0. Exit")
         
-        choice = input("\nEnter your choice (0-5): ").strip()
+        choice = input("\nEnter your choice (0-6): ").strip()
         
         if choice == '1':
             run_script("market_data_collector.py", "Market Data Collector")
@@ -60,11 +61,14 @@ def main():
             run_script("strategy_volatility.py", "Volatility Expansion Strategy")
             run_script("strategy_mean_reversion.py", "Mean Reversion Strategy")
             print("\n🎉 FULL PIPELINE COMPLETED SUCCESSFULLY!")
+        elif choice == '6':
+            print("\nLaunching Graphical Interface...")
+            run_script("gui_app.py", "Tkinter Desktop Application")
         elif choice == '0':
             print("Exiting program. Goodbye!")
             sys.exit(0)
         else:
-            print("Invalid choice. Please enter a number between 0 and 5.")
+            print("Invalid choice. Please enter a number between 0 and 6.")
 
 if __name__ == "__main__":
     main()
