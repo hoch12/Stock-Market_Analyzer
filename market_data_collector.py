@@ -42,7 +42,7 @@ def main():
     
     for ticker in config.TARGET_TICKERS:
         try:
-            df = fetch_market_data(ticker, period="1y")
+            df = fetch_market_data(ticker, period="5y")
             if df is not None:
                 all_dataframes.append(df)
         except Exception as e:

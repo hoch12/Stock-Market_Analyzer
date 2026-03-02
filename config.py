@@ -32,4 +32,4 @@ RSS_FEEDS = {
 }
 
 # Number of days of historical data to fetch when aligning market data
-HISTORY_DAYS = 365
+HISTORY_DAYS = 1825 # 5 years
